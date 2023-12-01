@@ -68,6 +68,7 @@ include_once('connect_db.php');
         </div>
         <div class="col-12">
           <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="check_me" value="0" id="gridCheck" checked hidden>
             <input class="form-check-input" type="checkbox" name="check_me" value="1" id="gridCheck">
             <label class="form-check-label" for="gridCheck">Check me out</label>
           </div>
@@ -120,7 +121,7 @@ include_once('connect_db.php');
       </table>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->
-
+    
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
