@@ -72,13 +72,6 @@ include_once('connect_db.php');
           <label for="inputZip" class="form-label">Zip</label>
           <input type="text" value="<?php echo $row["zip"]; ?>" name="zip" class="form-control" id="inputZip">
         </div>
-        <div class="col-12">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="check_me" value="1" id="gridCheck">
-            <label class="form-check-label" for="gridCheck">Check me out</label>
-          </div>
-        </div>
-        <div class="col-12">
           <input type="submit" name="update" value="แก้ไขข้อมูล" class="btn btn-success">
         </div>
       </form>
