@@ -1,3 +1,43 @@
+<?php
+  include_once('connect_db.php');
+  if (isset($_POST['login'])) {
+    $sql = "SELECT * FROM register WHERE email = ? AND pass_word = ?";
+    $email = $_POST['email'];
+    $pass_word = md5($_POST['password']);
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('ss', $email, $pass_word);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    if ($row > 0 ) {
+      echo '<script type="text/javascript">';
+      echo 'setTimeout(function () { swal.fire({
+        title: "สำเร็จ!",
+        text: "ยินดีต้อนรับเข้าสู่ระบบ",
+        type: "success",
+        icon: "success"
+      });';
+      echo '}, 500 );</script>';
+      echo '<script type="text/javascript">';
+      echo 'setTimeout(function () { 
+        window.location.href = "index.php";';
+      echo '}, 3000 );</script>';
+    } else {
+      echo '<script type="text/javascript">';
+      echo 'setTimeout(function () { swal.fire({
+        title: "ผิดพลาด!",
+        text: "กรุณาลองใหม่!",
+        type: "warning",
+        icon: "error"
+      });';
+      echo '}, 500);</script>';
+      echo '<script type="text/javascript">';
+      echo 'setTimeout(function () { 
+      window.location.href = "login.php";';
+      echo '}, 3000 );</script>';
+      }
+    }
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,30 +51,32 @@
     <title>Hello, world!</title>
   </head>
   <body>
+    <div class="center">
     <div class="container-fluid">
       <div class="card" style="width: 24rem;">
         <div class="card-body">
         <h1 class="card-title">Hello, world!</h1>
-          <form>
+          <form method="post">
               <div class="form-group">
                   <label for="exampleInputEmail1">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                  <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                   <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
               </div>
                   <div class="form-group">
                   <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                  <input type="password" name="pass_word" class="form-control" id="exampleInputPassword1" placeholder="Password">
               </div>
               <div class="form-group form-check">
                   <input type="checkbox" class="form-check-input" id="exampleCheck1">
                   <label class="form-check-label" for="exampleCheck1">Check me out</label>
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <input type="submit" name="login" value="เข้าสู่ระบบ" class="btn btn-primary">
           </form>
         </div>
       </div>
     </div>
-    
+    </div>
+
     <!-- Optional JavaScript --> 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
