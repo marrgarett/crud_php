@@ -70,7 +70,9 @@ include_once('connect_db.php');
       <div class="col-md-4">
         <label for="inputState" class="form-label">State</label>
         <select id="inputState" class="form-select" name="state">
-          <option selected><?php echo $row['state']?></option>
+          <option selected>
+            <?php echo $row['state'] ?>
+          </option>
           <option value="เลย">เลย</option>
           <option value="อุดรธานี">อุดรธานี</option>
           <option value="ขอนแก่น">ขอนแก่น</option>
