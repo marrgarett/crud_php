@@ -58,9 +58,48 @@ if (isset($_POST['login'])) {
   <link rel="stylesheet" href="sweetalert2/dist/sweetalert2.min.css">
 
 </head>
+<style>
+  .body {
+    width: 100%
+  }
+
+  .card {
+    display: flex;
+    align-items: center;
+    margin: 5% auto;
+    width: 18rem;
+  }
+</style>
 
 <body>
-  <div class="center">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.php">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="register.php">Register</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
     <div class="container-fluid">
       <div class="card" style="width: 24rem;">
         <div class="card-body">
@@ -70,7 +109,8 @@ if (isset($_POST['login'])) {
               <label for="exampleInputEmail1">Email address</label>
               <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                 placeholder="Enter email">
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                else.</small>
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Password</label>
@@ -87,7 +127,6 @@ if (isset($_POST['login'])) {
       </div>
     </div>
   </div>
-
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -101,5 +140,4 @@ if (isset($_POST['login'])) {
     crossorigin="anonymous"></script>
 
 </body>
-
 </html>

@@ -64,109 +64,149 @@ include_once('connect_db.php');
 
 <body>
   <div class="container">
-    <h1>เพิ่มข้อมูลส่วนตัว</h1>
-    <form action="registerSave.php" name="myForm" class="row g-3" method="post" onsubmit="return validateForm()">
-      <div class="col-md-6">
-        <label for="inputEmail4" class="form-label">Email</label>
-        <input type="email" name="email" class="form-control" id="inputEmail4" placeholder="example@gmail.com">
-      </div>
-      <div class="col-md-6">
-        <label for="inputPassword4" class="form-label">Password</label>
-        <input type="password" name="pass_word" class="form-control" id="inputPassword4">
-      </div>
-      <div class="col-12">
-        <label for="inputAddress" class="form-label">Address</label>
-        <input type="text" name="address1" class="form-control" id="inputAddress" placeholder="1234 Main St">
-      </div>
-      <div class="col-12">
-        <label for="inputAddress2" class="form-label">Address 2</label>
-        <input type="text" name="address2" class="form-control" id="inputAddress2"
-          placeholder="Apartment, studio, or floor">
-      </div>
-      <div class="col-md-6">
-        <label for="inputCity" class="form-label">City</label>
-        <input type="text" name="city" class="form-control" id="inputCity">
-      </div>
-      <div class="col-md-4">
-        <label for="inputState" class="form-label">State</label>
-        <select id="inputState" class="form-select" name="state">
-          <option value="">เลือกจังหวัด...</option>
-          <option value="เลย">เลย</option>
-          <option value="อุดรธานี">อุดรธานี</option>
-          <option value="ขอนแก่น">ขอนแก่น</option>
-        </select>
-      </div>
-      <div class="col-md-2">
-        <label for="inputZip" class="form-label">Zip</label>
-        <input type="text" name="zip" class="form-control" id="inputZip">
-      </div>
-      <div class="col-12">
-        <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="check_me" value="0" id="gridCheck" checked hidden>
-          <input class="form-check-input" type="checkbox" name="check_me" value="1" id="gridCheck">
-          <label class="form-check-label" for="gridCheck">
-            Check me out
-          </label>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.php">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="register.php">Register</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
         </div>
       </div>
-      <div class="col-12">
-        <input type="submit" name="save" value="บันทึกข้อมูล" class="btn btn-primary">
-      </div>
-    </form>
-    <hr>
-    <?php
-    $sql = "SELECT * FROM `register` ORDER BY `register`.`id` DESC";
-    $result = mysqli_query($conn, $sql);
-    ?>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">อีเมล์</th>
-          <th scope="col">ที่อยู่</th>
-          <th scope="col">รหัสผ่าน</th>
-          <th scope="col">สถานะ</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php
-        if (mysqli_num_rows($result) > 0) {
-          // output data of each row
-          $i = 1;
-          while ($row = mysqli_fetch_assoc($result)) {
-            ?>
-            <tr>
-              <th scope="row">
-                <?php echo $i ?>
-              </th>
-              <td>
-                <?php echo $row["email"] ?>
-              </td>
-              <td>
-                <?php echo $row["address1"] ?>
-              </td>
-              <td>
-                <?php echo $row["pass_word"] ?>
-              </td>
-              <td>
-                <?php echo $row["check_me"] ?>
-              </td>
-              <td>
-                <a href="Javascript:if(confirm('ยืนยันการลบข้อมูล')==true) 
-              {window.location='registerDel.php?id=<?php echo $row["id"]; ?>';}" class="btn btn-danger">ลบ</a>
-                <a href="registerEdit.php?id=<?php echo $row["id"]; ?>" class="btn btn-warning">แก้ไข</a>
-              </td>
-            </tr>
-            <?php
-            $i++;
-          }
-        }
-        ?>
-      </tbody>
-    </table>
-  </div>
+    </nav>
 
+    <div class="container">
+      <h1>เพิ่มข้อมูลส่วนตัว</h1>
+      <form action="registerSave.php" name="myForm" class="row g-3" method="post" onsubmit="return validateForm()">
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label">Email</label>
+          <input type="email" name="email" class="form-control" id="inputEmail4" placeholder="example@gmail.com">
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Password</label>
+          <input type="password" name="pass_word" class="form-control" id="inputPassword4">
+        </div>
+        <div class="col-12">
+          <label for="inputAddress" class="form-label">Address</label>
+          <input type="text" name="address1" class="form-control" id="inputAddress" placeholder="1234 Main St">
+        </div>
+        <div class="col-12">
+          <label for="inputAddress2" class="form-label">Address 2</label>
+          <input type="text" name="address2" class="form-control" id="inputAddress2"
+            placeholder="Apartment, studio, or floor">
+        </div>
+        <div class="col-md-6">
+          <label for="inputCity" class="form-label">City</label>
+          <input type="text" name="city" class="form-control" id="inputCity">
+        </div>
+        <div class="col-md-4">
+          <label for="inputState" class="form-label">State</label>
+          <select id="inputState" class="form-select" name="state">
+            <option value="">เลือกจังหวัด...</option>
+            <option value="เลย">เลย</option>
+            <option value="อุดรธานี">อุดรธานี</option>
+            <option value="ขอนแก่น">ขอนแก่น</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <label for="inputZip" class="form-label">Zip</label>
+          <input type="text" name="zip" class="form-control" id="inputZip">
+        </div>
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="check_me" value="0" id="gridCheck" checked hidden>
+            <input class="form-check-input" type="checkbox" name="check_me" value="1" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Check me out
+            </label>
+          </div>
+        </div>
+        <div class="col-12">
+          <input type="submit" name="save" value="บันทึกข้อมูล" class="btn btn-primary">
+        </div>
+      </form>
+      <hr>
+      <?php
+      $sql = "SELECT * FROM `register` ORDER BY `register`.`id` DESC";
+      $result = mysqli_query($conn, $sql);
+      ?>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">อีเมล์</th>
+            <th scope="col">รหัสผ่าน</th>
+            <th scope="col">ที่อยู่ 1</th>
+            <th scope="col">ที่อยู่ 2</th>
+            <th scope="col">เมือง</th>
+            <th scope="col">จังหวัด</th>
+            <th scope="col">สถานะ</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+          if (mysqli_num_rows($result) > 0) {
+            // output data of each row
+            $i = 1;
+            while ($row = mysqli_fetch_assoc($result)) {
+              ?>
+              <tr>
+                <th scope="row">
+                  <?php echo $i ?>
+                </th>
+                <td>
+                  <?php echo $row["email"] ?>
+                </td>
+                <td>
+                  <?php echo $row["pass_word"] ?>
+                </td>
+                <td>
+                  <?php echo $row["address1"] ?>
+                </td>
+                <td>
+                  <?php echo $row["address2"] ?>
+                </td>
+                <td>
+                  <?php echo $row["city"] ?>
+                </td>
+                <td>
+                  <?php echo $row["state"] ?>
+                </td>
+                <td>
+                  <?php echo $row["check_me"] ?>
+                </td>
+                <td>
+                  <a href="Javascript:if(confirm('ยืนยันการลบข้อมูล')==true) 
+              {window.location='registerDel.php?id=<?php echo $row["id"]; ?>';}" class="btn btn-danger">ลบ</a>
+                  <a href="registerEdit.php?id=<?php echo $row["id"]; ?>" class="btn btn-warning">แก้ไข</a>
+                </td>
+              </tr>
+              <?php
+              $i++;
+            }
+          }
+          ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
   <!-- Optional JavaScript; choose one of the two! -->
 
   <!-- Option 1: Bootstrap Bundle with Popper -->
