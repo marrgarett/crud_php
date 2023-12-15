@@ -10,6 +10,12 @@ $state = $_POST["state"];
 $zip = $_POST["zip"];
 $check_me = $_POST["check_me"];
 
+if($check_me == ""){
+    $check_me = "0";
+}else{
+    $check_me = "1";
+}
+
 if (isset($_POST['save'])) {
 
     $sql = "INSERT INTO `register` (`id`, `email`, `pass_word`, `address1`, `address2`, `city`, 

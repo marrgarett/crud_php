@@ -130,7 +130,7 @@ include_once('connect_db.php');
         </div>
         <div class="col-12">
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="check_me" value="0" id="gridCheck" checked hidden>
+            <!-- <input class="form-check-input" type="checkbox" name="check_me" value="0" id="gridCheck" checked hidden> -->
             <input class="form-check-input" type="checkbox" name="check_me" value="1" id="gridCheck">
             <label class="form-check-label" for="gridCheck">
               Check me out
